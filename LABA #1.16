@@ -1,0 +1,30 @@
+inp = int(input('Input a positive integer: '))
+
+x = 1
+nums = []
+while inp >= x:
+    nums.append(x)
+    x += 1              #тут создаю список, начиная с единицы до inp
+
+zhopa = []
+for el in nums:
+    i = 1
+    amount = 0
+    while i <= el:
+        xyi = el / i
+        chlen = el // i
+        if chlen == xyi:
+            amount += 1
+        i += 1
+    zhopa.append(amount)                #тут вывожу кол-во натуральных делителей для каждого числа от 1 до inp
+
+max = zhopa[0]
+for el in zhopa:
+    if el > max:
+        max = el            #ищу максимальное кол-во делителей
+
+resI = 0
+while zhopa[resI] != max:
+    resI += 1               #ищу номер минимального числа, у которого больше всего натур делителей
+
+print(nums[resI])
