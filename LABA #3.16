@@ -1,0 +1,63 @@
+integers = int(input('Input the number of integers: '))
+
+i = 1
+integ = []
+while integers >= i:
+    print('Input the integer #', i, sep='', end='')
+    integ.append(int(input(' - ')))
+    i += 1                                                      #до этого момента - ввод данных
+
+konec = 0 - integers
+leng = integers - 1
+x = 0
+sma = []
+while x < leng:                                                 
+
+    summa = 0
+    for el in integ[x::]:
+        summa += el
+    sma.append(summa)
+
+    y = -1
+    while y > konec:
+        summa = 0
+        for el in integ[x:y]:
+            summa += el
+        sma.append(summa)
+        y -= 1
+
+    x += 1                                                      #хуярю сумму всех отрзеков
+
+max = sma[0]
+for el in sma:
+    if el > max:
+        max = el
+print('Sum: ', max)                                             #ищу максимальную сумму
+
+
+#ТУТ СКОПИРОВАЛ ХУЙНЮ ГДЕ ИСКАЛ СУММУ ВСЕХ ОТРЕЗКОВ, НО ДОБАВИЛ ПАРОЧКУ if
+konec = 0 - integers
+leng = integers - 1
+x = 0
+sma = []
+while x < leng:
+
+    summa = 0
+    for el in integ[x::]:
+        summa += el
+    if summa == max:                                                                    #тут 
+        print('Maximum subarray bounds: ', integ[x], ' ... ', integers, sep='')         #...
+    sma.append(summa)
+
+    y = -1
+    while y > konec:
+        summa = 0
+        for el in integ[x:y]:
+            summa += el
+        if summa == max:                                                                #и тут
+            q = integers + y                                                            #...
+            print('Maximum subarray bounds: ', integ[x], ' ... ', q, sep='')            #...
+        sma.append(summa)
+        y -= 1
+
+    x += 1
