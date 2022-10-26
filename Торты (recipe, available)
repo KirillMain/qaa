@@ -1,0 +1,27 @@
+#recipe = {"flour": 500, "sugar": 200, "eggs": 1}
+#available = {"flour": 1200, "sugar": 1200, "eggs": 5, "milk": 200}
+# Сверху другой варик
+
+
+recipe = {"apples": 3, "flour": 300, "sugar": 150, "milk": 100, "oil": 100}  #репецт хуйни
+available = {"sugar": 500, "flour": 2000, "milk": 2000}   #доступные игнридиенты
+
+def cakes(recipe, available):  #сколько тортов можно сделать из доступных ресурсов по определенному рецепту
+    res = 0
+    z = []
+    leng = 0
+
+    for key in recipe.keys():
+        leng += 1
+
+    for key in recipe.keys():
+        for el in available.keys():
+            if key == el:
+                if available[el]//recipe[key] >= 1:
+                    z.append(available[el]//recipe[key])
+
+    if len(z) == leng:
+        res = min(z)
+    return res
+
+print('RESULT: ', cakes(recipe, available))
